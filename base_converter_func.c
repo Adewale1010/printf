@@ -38,7 +38,7 @@ unsigned int convert_signed_base(buffer_t *output, long int num, char *base,
 		for (; precision > 1; precision--, width--)
 			rem += _memory_copy(output, &padding, 1);
 
-		if (F_NEG == 0)
+		if (F_MINUS == 0)
 		{
 			padding = (F_ZERO == 1) ? '0' : ' ';
 			for (; width > 1; width--)
@@ -88,7 +88,7 @@ unsigned int convert_unsigned_base(buffer_t *output, unsigned long int num,
 		for (; precision > 1; precision--, width--)
 			rem += _memory_copy(output, &padding, 1);
 
-		if (F_NEG == 0)
+		if (F_MINUS == 0)
 		{
 			padding = (F_ZERO == 1) ? '0' : ' ';
 			for (; width > 1; width--)
