@@ -33,7 +33,7 @@ typedef struct buffer_s
 } buffer_t;
 
 /**
- * struct coverter_x - A new type defining a converter struct
+ * struct converter_x - A new type defining a converter struct
  * @specifier: A char representing a conversion specifier
  * @function: A pointer to a conversion funtion corresponding
  * to specifier
@@ -46,6 +46,17 @@ typedef struct converter_x
 			unsigned char, int, int, unsigned char);
 } converter_t;
 
+/**
+ * struct flag_s - A new type defining a flag struct
+ * @flag: A char representing a flag
+ * @val: The integer value of the flag
+ */
+
+typedef struct flag_s
+{
+	unsigned char flag;
+	unsigned char val;
+} flag_t;
 
 int _printf(const char *format, ...);
 
