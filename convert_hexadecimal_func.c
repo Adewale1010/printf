@@ -1,9 +1,9 @@
 #include "main.h"
 
-unsigned int convert_lower_hexa(va_list arg_list,
+unsigned int convert_lower_hex(va_list arg_list,
 		buffer_t *output, unsigned char flags,
 		int width, int precision, unsigned char length);
-unsigned int convert_upper_hexa(va_list arg_list,
+unsigned int convert_upper_hex(va_list arg_list,
 		buffer_t *output, unsigned char flags,
 		int width, int precision, unsigned char length);
 
@@ -49,7 +49,7 @@ unsigned int convert_lower_hex(va_list arg_list,
 }
 
 /**
- * convert_upper_base - Converts an unsigned int to hex
+ * convert_upper_hex - Converts an unsigned int to hex
  * using ABCDEF
  * @arg_list: List of arguments
  * @flags: Flag modifier
