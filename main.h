@@ -48,7 +48,7 @@ typedef struct converter_x
 	unsigned char specifier;
 	unsigned int (*function)(va_list, buffer_t *,
 			unsigned char, int, int, unsigned char);
-} converter_t;
+} converter_s;
 
 /**
  * struct flag_s - A new type defining a flag struct
@@ -60,7 +60,7 @@ typedef struct flag_s
 {
 	unsigned char flag;
 	unsigned char val;
-} flag_t;
+} flag_f;
 
 int _printf(const char *format, ...);
 
