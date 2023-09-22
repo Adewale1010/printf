@@ -111,7 +111,7 @@ unsigned int _convert_signed_int(va_list arg_list, buffer_t *output,
 		count += (s == 0) ? 1 : 0;
 		count += (s < 0) ? 1 : 0;
 		count += (F_PLUS == 1 && s >= 0) ? 1 : 0;
-		count += (F_MINUS == 1 && s >= 0) ? 1 : 0;
+		count += (F_SPACE == 1 && s >= 0) ? 1 : 0;
 
 		if (F_ZERO == 1 && F_PLUS == 1 && s >= 0)
 		{
@@ -134,6 +134,10 @@ unsigned int _convert_signed_int(va_list arg_list, buffer_t *output,
 		rem += _memory_copy(output, &minus, 1);
 	}
 	if (F_ZERO == 0 && (F_PLUS == 1 && s >= 0))
+	{
+		rem += _memory_copy(output, &plus, 1);
+	}
+	if (!(s == 0 && precision == 0))
 	{
 		rem += convert_signed_base(output, s, "0123456789",
 				flags, 0, precision);

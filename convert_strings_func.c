@@ -140,7 +140,7 @@ unsigned int convert_rot13_string(va_list arg_list, buffer_t *output,
 	unsigned int rem;
 	char *str, *null = "(null)";
 	char *alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	char *rot13 = "nopqrstuvwxyabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	char *rot13 = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
 	rem = 0;
 
