@@ -56,7 +56,7 @@ int _act_printf(const char *format, va_list arg_list, buffer_t *output)
 			}
 			else if (*(format + indx + temp + 1) == '\0')
 			{
-				rem = 1;
+				rem = -1;
 				break;
 			}
 		}
