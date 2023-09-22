@@ -92,7 +92,7 @@ unsigned int convert_unsigned_base(buffer_t *output, unsigned long int num,
 		{
 			padding = (F_ZERO == 1) ? '0' : ' ';
 			for (; width > 1; width--)
-				rem += _memory_copy(output, l, 2);
+				rem += _memory_copy(output, &padding, 1);
 		}
 		if (((flags >> 5) & 1) == 1)
 			rem += _memory_copy(output, l, 2);
