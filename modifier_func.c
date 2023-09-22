@@ -59,7 +59,7 @@ unsigned int _print_width(buffer_t *output, unsigned int printed,
 
 	if (F_MINUS == 0)
 	{
-		for (width -= precision; width > 0;) 
+		for (width -= printed; width > 0;) 
 		{
 			rem += _memory_copy(output, &wid, 1);
 		}

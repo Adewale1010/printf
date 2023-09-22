@@ -45,6 +45,16 @@ unsigned int convert_lower_string(va_list arg_list, buffer_t *output,
 		size++;
 	}
 
+	rem += _print_string_width(output, flags, width, precision, size);
+
+	precision = (precision == -1) ? size : precision;
+	while (*str != '\0' && precision > 0)
+	{
+		rem += _memory_copy(output, str, 1);
+		precision--;
+		str++;
+	}
+
 	rem += _print_negative_width(output, rem, flags, width);
 
 	return (rem);
@@ -73,6 +83,8 @@ unsigned int convert_upper_string(va_list arg_list, buffer_t *output,
 	unsigned int rem;
 	char *str, *null = "(null)", zero = '0', *hex = "\\x";
 
+	rem = 0;
+
 	(void)length;
 	str = va_arg(arg_list, char *);
 	if (str == NULL)
@@ -93,7 +105,7 @@ unsigned int convert_upper_string(va_list arg_list, buffer_t *output,
 		if (*(str + i) < 32 || *(str + i) >= 127)
 		{
 			rem += _memory_copy(output, hex, 2);
-			if (*(str + index) < 16)
+			if (*(str + i) < 16)
 			{
 				rem += _memory_copy(output, &zero, 1);
 			}
@@ -101,10 +113,10 @@ unsigned int convert_upper_string(va_list arg_list, buffer_t *output,
 					"0123456789ABCDEF", flags, 0, 0);
 			continue;
 		}
-		rem += _memory_copy(output, (str + index), 1);
+		rem += _memory_copy(output, (str + i), 1);
 	}
 
-	rem += _print_negative_width(output, ret, flags, width);
+	rem += _print_negative_width(output, rem, flags, width);
 
 	return (rem);
 }
@@ -165,7 +177,7 @@ unsigned int convert_rot13_string(va_list arg_list, buffer_t *output,
 		}
 	}
 
-	rem += _print_negatvive_width(output, rem, flags, width);
+	rem += _print_negative_width(output, rem, flags, width);
 
 	return (rem);
 }
@@ -205,7 +217,17 @@ unsigned int convert_reverse_string(va_list arg_list, buffer_t *output,
 		size++;
 	}
 
-	rem += _print_string_width(output, rem, flags, width);
+	rem += _print_string_width(output, flags, width, precision, size);
+
+	last = size - 1;
+	precision = (precision == -1) ? size : precision;
+	for (index = 0; last >= 0 && index < precision; index++)
+	{
+		rem += _memory_copy(output, (str + last), 1);
+		last--;
+	}
+
+	rem += _print_negative_width(output, rem, flags, width);
 
 	return (rem);
 }

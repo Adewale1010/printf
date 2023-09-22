@@ -39,6 +39,11 @@ unsigned int convert_lower_hex(va_list arg_list,
 
 	if (F_HASH == 1 && num != 0)
 	{
+		rem += _memory_copy(output, l, 2);
+	}
+
+	if (!(num == 0 && precision == 0))
+	{
 		rem += convert_unsigned_base(output, num, "0123456789abcdef",
 				flags, width, precision);
 	}

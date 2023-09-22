@@ -2,7 +2,7 @@
 
 unsigned int convert_signed_base(buffer_t *output, long int num, char *base,
 		unsigned char flags, int width, int precision);
-unisigned int convert_unsigned_base(buffer_t *output,
+unsigned int convert_unsigned_base(buffer_t *output,
 		unsigned long int num, char *base,
 		unsigned char flags, int width, int precision);
 

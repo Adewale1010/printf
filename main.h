@@ -68,7 +68,7 @@ int _printf(const char *format, ...);
 unsigned int _convert_unsigned_c(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision,
 		unsigned char len);
-unsigned int _convert_signed_int(va_list arg_list, butter_t *output,
+unsigned int _convert_signed_int(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision,
 		unsigned char length);
 unsigned int convert_lower_string(va_list arg_list, buffer_t *output,
@@ -76,13 +76,13 @@ unsigned int convert_lower_string(va_list arg_list, buffer_t *output,
 unsigned int _convert_percent(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision,
 		unsigned char length);
-unsigned int _convert_octal(va_list arg_list, butter_t *output,
+unsigned int _convert_octal(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision,
 		unsigned char length);
-unsigned int _convert_decimal(va_list arg_list, butter_t *output,
+unsigned int _convert_decimal(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision,
 		unsigned char length);
-unsigned int _convert_binary(va_list arg_list, butter_t *output,
+unsigned int _convert_binary(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision,
 		unsigned char length);
 unsigned int convert_lower_hex(va_list arg_list,
@@ -91,6 +91,8 @@ unsigned int convert_lower_hex(va_list arg_list,
 unsigned int convert_upper_hex(va_list arg_list,
 		buffer_t *output, unsigned char flags,
 		int width, int precision, unsigned char length);
+unsigned int convert_upper_string(va_list arg_list, buffer_t *output,
+		unsigned char flags, int width, int precision, unsigned char length);
 unsigned int convert_reverse_string(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision, unsigned char length);
 unsigned int _convert_addr_hex(va_list arg_list, buffer_t *output,
@@ -116,12 +118,12 @@ unsigned int _print_negative_width(buffer_t *output, unsigned int printed,
 		unsigned char flags, int width);
 
 /** Memory and base helper function prototypes **/
-unsigned int _free_buffer(buffer_t *output);
+void _free_buffer(buffer_t *output);
 unsigned int _memory_copy(buffer_t *output, const char *src, unsigned int m);
 buffer_t *initialize_buffer(void);
 unsigned int convert_signed_base(buffer_t *output, long int num, char *base,
 		unsigned char flags, int width, int precision);
-unisigned int convert_unsigned_base(buffer_t *output,
+unsigned int convert_unsigned_base(buffer_t *output,
 		unsigned long int num, char *base,
 		unsigned char flags, int width, int precision);
 

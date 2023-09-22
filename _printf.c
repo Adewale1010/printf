@@ -88,7 +88,7 @@ int _printf(const char *format, ...)
 
 	va_start(arg_list, format);
 
-	rem = _act_print(format, arg_list, output);
+	rem = _act_printf(format, arg_list, output);
 
 	return (rem);
 }

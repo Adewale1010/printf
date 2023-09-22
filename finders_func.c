@@ -31,7 +31,7 @@ unsigned char find_length(const char *modifier, char *index)
 		return (LONG);
 	}
 
-	return (rem);
+	return (0);
 }
 
 /**
@@ -45,7 +45,7 @@ unsigned char find_length(const char *modifier, char *index)
 
 unsigned char find_flags(const char *flag, char *index)
 {
-	int index, k;
+	int ind, k;
 	unsigned int rem = 0;
 	flag_f flags[] = {
 		{'+', PLUS},
@@ -56,11 +56,11 @@ unsigned char find_flags(const char *flag, char *index)
 		{0, 0}
 	};
 
-	for (index = 0; flag[index]; index++)
+	for (ind = 0; flag[ind]; ind++)
 	{
 		for (k = 0; flags[k].flag != 0; k++)
 		{
-			if (flag[index] == flags[k].flag)
+			if (flag[ind] == flags[k].flag)
 			{
 				(*index)++;
 				if (rem == 0)
@@ -70,7 +70,7 @@ unsigned char find_flags(const char *flag, char *index)
 				break;
 			}
 		}
-		if (flags[j].val == 0)
+		if (flags[k].val == 0)
 			break;
 	}
 
@@ -94,7 +94,7 @@ int find_precision(va_list arg_list, const char *modifier, char *index)
 
 	value = 0;
 
-	if (*modifier != ',')
+	if (*modifier != '.')
 		return (-1);
 
 	modifier++;
@@ -196,10 +196,10 @@ unsigned int (*find_specifiers(const char *specifier))(va_list, buffer_t *,
 		{0, NULL}
 	};
 
-	for (indx = 0; converter[indx].function; indx++)
+	for (indx = 0; converters[indx].function; indx++)
 	{
 		if (converters[indx].specifier == *specifier)
-			return (converters[i].function);
+			return (converters[indx].function);
 	}
 
 	return (NULL);

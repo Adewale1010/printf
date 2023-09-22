@@ -1,6 +1,6 @@
 #include "main.h"
 
-unsigned int _free_buffer(buffer_t *output);
+void _free_buffer(buffer_t *output);
 unsigned int _memory_copy(buffer_t *output, const char *src, unsigned int m);
 buffer_t *initialize_buffer(void);
 
@@ -29,7 +29,7 @@ unsigned int _memory_copy(buffer_t *output, const char *src, unsigned int m)
 {
 	unsigned int indx;
 
-	for (indx = 0; indx < n; indx++)
+	for (indx = 0; indx < m; indx++)
 	{
 		*(output->buffer) = *(src + indx);
 		(output->length)++;
@@ -38,7 +38,7 @@ unsigned int _memory_copy(buffer_t *output, const char *src, unsigned int m)
 		{
 			write(1, output->start, output->length);
 			output->buffer = output->start;
-			output->len = 0;
+			output->length = 0;
 		}
 
 		else

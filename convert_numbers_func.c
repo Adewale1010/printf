@@ -1,15 +1,15 @@
 #include "main.h"
 
-unsigned int _convert_decimal(va_list arg_list, butter_t *output,
+unsigned int _convert_decimal(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision,
 		unsigned char length);
-unsigned int _convert_signed_int(va_list arg_list, butter_t *output,
+unsigned int _convert_signed_int(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision,
 		unsigned char length);
-unsigned int _convert_binary(va_list arg_list, butter_t *output,
+unsigned int _convert_binary(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision,
 		unsigned char length);
-unsigned int _convert_octal(va_list arg_list, butter_t *output,
+unsigned int _convert_octal(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision,
 		unsigned char length);
 
@@ -25,7 +25,7 @@ unsigned int _convert_octal(va_list arg_list, butter_t *output,
  * Return: Number of bytes stored to the buffer
  */
 
-unsigned int _convert_decimal(va_list arg_list, butter_t *output,
+unsigned int _convert_decimal(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision, unsigned char length)
 {
 	unsigned int rem;
@@ -105,15 +105,15 @@ unsigned int _convert_signed_int(va_list arg_list, buffer_t *output,
 		}
 		else
 		{
-			for (dup = (s < 0) ? -s : s; copy > 0; copy /= 10)
+			for (dup = (s < 0) ? -s : s; dup > 0; dup /= 10)
 				count++;
 		}
 		count += (s == 0) ? 1 : 0;
 		count += (s < 0) ? 1 : 0;
 		count += (F_PLUS == 1 && s >= 0) ? 1 : 0;
-		count += (F_MINUS == 1 &&, s >= 0) ? 1 : 0;
+		count += (F_MINUS == 1 && s >= 0) ? 1 : 0;
 
-		if (F_ZERO == 1 &&, F_PLUS == 1 && s >= 0)
+		if (F_ZERO == 1 && F_PLUS == 1 && s >= 0)
 		{
 			rem += _memory_copy(output, &plus, 1);
 		}
@@ -135,7 +135,7 @@ unsigned int _convert_signed_int(va_list arg_list, buffer_t *output,
 	}
 	if (F_ZERO == 0 && (F_PLUS == 1 && s >= 0))
 	{
-		rem += convert_signed_based(output, s, "0123456789",
+		rem += convert_signed_base(output, s, "0123456789",
 				flags, 0, precision);
 	}
 
@@ -156,7 +156,7 @@ unsigned int _convert_signed_int(va_list arg_list, buffer_t *output,
  * Return: Number of byte stored to the buffer
  */
 
-unsigned int _convert_binary(va_list arg_list, butter_t *output,
+unsigned int _convert_binary(va_list arg_list, buffer_t *output,
 		unsigned char flags, int width, int precision, unsigned char length)
 {
 	unsigned int x;
