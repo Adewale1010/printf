@@ -14,7 +14,7 @@ void _cleaner(va_list arg_list, buffer_t *output)
 {
 	va_end(arg_list);
 	write(1, output->start, output->length);
-	free_buffer(output);
+	_free_buffer(output);
 }
 
 /**
@@ -45,7 +45,7 @@ int _act_printf(const char *format, va_list arg_list, buffer_t *output)
 			width = find_width(arg_list, format + indx + temp + 1, &temp);
 			precision = find_precision(arg_list, format + indx + temp + 1,
 					&temp);
-			length = get_length(format + indx + temp + 1, &temp);
+			length = find_length(format + indx + temp + 1, &temp);
 
 			f = find_specifiers(format + indx + temp + 1);
 			if (f != NULL)
